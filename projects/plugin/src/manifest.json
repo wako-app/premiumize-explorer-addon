@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../node_modules/@wako-app/mobile-sdk/dist/manifest-schema.json",
+  "version": "1.0.0",
+  "id": "plugin.premiumize-explorer",
+  "name": "Premiumize Explorer",
+  "description": "Browse and play videos stored on your Premiumize account",
+  "author": "wako",
+  "actions": ["file-explorer"],
+  "entryPointV2": "/plugin.js",
+  "languages": {
+    "en": "/i18n/en.json",
+    "fr": "/i18n/fr.json"
+  },
+  "changeLogs": {
+    "1.0.0": "Initial Version"
+  }
+}

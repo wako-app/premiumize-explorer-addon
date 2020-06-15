@@ -1,0 +1,10 @@
+ion-list-header ion-label {
+  display: flex;
+  align-items: center;
+
+  .pm-icon {
+    width: 20px;
+    display: inline;
+    margin-right: 10px;
+  }
+}
