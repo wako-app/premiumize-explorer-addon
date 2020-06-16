@@ -893,6 +893,7 @@
                         if ('error' === t.status) throw new Error(null !== (n = t.message) && void 0 !== n ? n : JSON.stringify(t));
                         var r = {
                           isRoot: 'root' === t.name,
+                          title: 'root' === t.name ? 'Premiumize Explorer' : t.name,
                           folderId: t.folder_id,
                           parentId: t.parent_id,
                           label: t.name,

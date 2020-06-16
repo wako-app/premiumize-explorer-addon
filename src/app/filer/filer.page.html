@@ -1,23 +1,36 @@
 <ion-header>
-  <ion-toolbar *ngIf="explorerFolderItem">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button *ngIf="explorerFolderItem.isRoot === false" class="back-button" (click)="goBack(explorerFolderItem)">
+      <ion-button
+        *ngIf="currentExplorerFolderItem && currentExplorerFolderItem.isRoot === false"
+        class="back-button"
+        (click)="goBack(currentExplorerFolderItem)"
+      >
         <ion-icon name="arrow-back-sharp"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>
-      {{explorerFolderItem.label}}
+      File Explorer
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button *ngIf="explorerFolderItem.isRoot === false" (click)="goToRoot()">
+      <ion-button *ngIf="currentExplorerFolderItem && currentExplorerFolderItem.isRoot === false" (click)="goToRoot()">
         <ion-icon name="home-outline"></ion-icon>
       </ion-button>
+      <ion-button *ngIf="!isLoading && !currentExplorerFolderItem" (click)="goToRoot()">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+      <ion-spinner *ngIf="isLoading" class="ion-margin-end"></ion-spinner>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list *ngIf="explorerFolderItem">
+  <ion-list *ngFor="let explorerFolderItem of explorerFolderItems">
+    <ion-list-header>
+      <ion-label>
+        {{explorerFolderItem.title}}
+      </ion-label>
+    </ion-list-header>
     <ion-item-sliding *ngFor="let item of explorerFolderItem.items">
       <ion-item *ngIf="item.type === 'folder'" button (click)="fetchChildren(item)">
         <ion-icon name="folder-open-outline" class="ion-margin-end" slot="start"></ion-icon>
@@ -34,10 +47,13 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="delete(item)">
+        <ion-item-option color="danger" (click)="delete(explorerFolderItem, item)" [disabled]="!item.deleteAction">
           <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    <ion-item *ngIf="explorerFolderItem.items.length === 0">
+      No Result
+    </ion-item>
   </ion-list>
 </ion-content>

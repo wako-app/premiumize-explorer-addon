@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PremiumizeFolderListForm } from './premiumize/forms/folder/premiumize-folder-list.form';
-import { map, switchMap } from 'rxjs/operators';
+import { delay, map, switchMap } from 'rxjs/operators';
 import { ExplorerFile, ExplorerFolderItem } from '@wako-app/mobile-sdk';
 import { SettingsService } from './settings.service';
 import { PremiumizeApiService } from './premiumize/services/premiumize-api.service';
@@ -27,8 +27,9 @@ export class ExplorerService {
               throw new Error(data.message ?? JSON.stringify(data));
             }
 
-            let explorerFolderItem: ExplorerFolderItem = {
+            const explorerFolderItem: ExplorerFolderItem = {
               isRoot: data.name === 'root',
+              title: data.name === 'root' ? 'Premiumize Explorer' : data.name,
               folderId: data.folder_id,
               parentId: data.parent_id,
               label: data.name,

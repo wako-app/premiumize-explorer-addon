@@ -8,7 +8,10 @@ import { ExplorerFolderItem, ExplorerItem, WakoFileActionService } from '@wako-a
   styleUrls: ['filer.page.scss']
 })
 export class FilerPage implements OnInit {
-  explorerFolderItem: ExplorerFolderItem = null;
+  private rootExplorerFolderItems: ExplorerFolderItem[] = [];
+  explorerFolderItems: ExplorerFolderItem[] = [];
+  currentExplorerFolderItem: ExplorerFolderItem = null;
+  isLoading = false;
 
   constructor(private pluginLoader: PluginLoaderService, private fileActionService: WakoFileActionService) {}
 
@@ -18,36 +21,49 @@ export class FilerPage implements OnInit {
 
   fetchChildren(explorerFolderItem: ExplorerItem) {
     explorerFolderItem.fetchChildren.subscribe((explorerFolderItem) => {
-      this.explorerFolderItem = explorerFolderItem;
+      this.currentExplorerFolderItem = explorerFolderItem;
+      this.explorerFolderItems = [explorerFolderItem];
     });
   }
 
   goBack(explorerFolderItem: ExplorerFolderItem) {
     explorerFolderItem.goToParentAction.subscribe((explorerFolderItem) => {
-      this.explorerFolderItem = explorerFolderItem;
+      this.currentExplorerFolderItem = explorerFolderItem;
+      if (explorerFolderItem.isRoot) {
+        this.explorerFolderItems = [...this.rootExplorerFolderItems];
+      }
     });
   }
 
   async goToRoot() {
+    this.isLoading = true;
     const pluginService = this.pluginLoader.getPluginService('plugin.premiumize-explorer');
 
-    this.explorerFolderItem = await pluginService.fetchExplorerFolderItem();
+    this.currentExplorerFolderItem = null;
+
+    const explorerFolderItem = await pluginService.fetchExplorerFolderItem();
+
+    this.rootExplorerFolderItems = Array.isArray(explorerFolderItem) ? explorerFolderItem : [explorerFolderItem];
+    this.explorerFolderItems = Array.isArray(explorerFolderItem) ? explorerFolderItem : [explorerFolderItem];
+
+    this.isLoading = false;
   }
 
   open(item: ExplorerItem) {
     this.fileActionService.openWithDefaultActions(item.file.link, item.file.streamLink);
   }
 
-  delete(item: ExplorerItem) {
+  delete(folder: ExplorerFolderItem, item: ExplorerItem) {
     item.deleteAction.subscribe(() => {
       const items: ExplorerItem[] = [];
-      this.explorerFolderItem.items.forEach((i) => {
+
+      folder.items.forEach((i) => {
         if (i.id !== item.id) {
           items.push(i);
         }
       });
 
-      this.explorerFolderItem.items = items;
+      folder.items = items;
     });
   }
 }
