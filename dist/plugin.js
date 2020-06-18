@@ -501,16 +501,16 @@
       function O() {
         return 'function' == typeof Symbol && Symbol.iterator ? Symbol.iterator : '@@iterator';
       }
-      var I = O(),
-        k = (function () {
+      var k = O(),
+        I = (function () {
           return ('function' == typeof Symbol && Symbol.observable) || '@@observable';
         })();
       var P = function (t) {
-        if (t && 'function' == typeof t[k])
+        if (t && 'function' == typeof t[I])
           return (
             (o = t),
             function (t) {
-              var e = o[k]();
+              var e = o[I]();
               if ('function' != typeof e.subscribe) throw new TypeError('Provided object does not correctly implement Symbol.observable');
               return e.subscribe(t);
             }
@@ -547,11 +547,11 @@
               );
             }
           );
-        if (t && 'function' == typeof t[I])
+        if (t && 'function' == typeof t[k])
           return (
             (n = t),
             function (t) {
-              for (var e = n[I](); ; ) {
+              for (var e = n[k](); ; ) {
                 var r = e.next();
                 if (r.done) {
                   t.complete();
@@ -660,7 +660,7 @@
             var e = this.source;
             return e && e.subscribe(t);
           }),
-          (t.prototype[k] = function () {
+          (t.prototype[I] = function () {
             return this;
           }),
           (t.prototype.pipe = function () {
@@ -1108,7 +1108,7 @@
               });
             }),
             (t.prototype.openPremiumize = function () {
-              s.BrowserService.open('https://www.premiumize.me/ref/922027689');
+              s.BrowserService.open('https://www.premiumize.me?ref=wako');
             }),
             (t.prototype.setSettings = function () {
               return Object(r.__awaiter)(this, void 0, void 0, function () {

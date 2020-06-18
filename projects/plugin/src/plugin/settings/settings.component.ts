@@ -88,7 +88,7 @@ export class SettingsComponent implements OnInit {
   }
 
   openPremiumize() {
-    BrowserService.open('https://www.premiumize.me/ref/922027689');
+    BrowserService.open('https://www.premiumize.me?ref=wako');
   }
 
   async setSettings() {
