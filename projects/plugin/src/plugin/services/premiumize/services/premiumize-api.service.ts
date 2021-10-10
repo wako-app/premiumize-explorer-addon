@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs';
 import { WakoBaseHttpService } from '@wako-app/mobile-sdk';
+import { Observable } from 'rxjs';
 
 export class PremiumizeApiService extends WakoBaseHttpService {
   private static apikey;
@@ -30,7 +30,7 @@ export class PremiumizeApiService extends WakoBaseHttpService {
     if (!params['apikey']) {
       params['apikey'] = this.apikey;
     }
-    return super.get<T>(url, params, cacheTime);
+    return super.get<T>(url, params, cacheTime, 50000);
   }
 
   static post<T>(url: string, body: Object, cacheTime?: string) {
