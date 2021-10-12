@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { PremiumizeFolderListForm } from './premiumize/forms/folder/premiumize-folder-list.form';
-import { delay, map, switchMap } from 'rxjs/operators';
 import { ExplorerFile, ExplorerFolderItem } from '@wako-app/mobile-sdk';
-import { SettingsService } from './settings.service';
-import { PremiumizeApiService } from './premiumize/services/premiumize-api.service';
 import { from } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { PremiumizeFolderDeleteForm } from './premiumize/forms/folder/premiumize-folder-delete.form';
+import { PremiumizeFolderListForm } from './premiumize/forms/folder/premiumize-folder-list.form';
 import { PremiumizeItemDeleteForm } from './premiumize/forms/item/premiumize-item-delete.form';
+import { PremiumizeApiService } from './premiumize/services/premiumize-api.service';
+import { SettingsService } from './settings.service';
 
 @Injectable()
 export class ExplorerService {
@@ -36,7 +36,12 @@ export class ExplorerService {
               items: [],
               goToParentAction: data.name === 'root' ? null : this.get(data.parent_id)
             };
+
             data.content.forEach((item) => {
+              if (!item.stream_link) {
+                item.stream_link = item.link;
+              }
+
               if (item.type === 'file' && !item.stream_link) {
                 return;
               }
