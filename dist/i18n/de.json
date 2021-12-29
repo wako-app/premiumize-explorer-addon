@@ -1,0 +1,11 @@
+{
+  "test": "TOTTO",
+  "settings": {
+    "logout": "Abmelden",
+    "login": "Anmelden",
+    "explain": "Premiumize.me ist ein Cloud-Dienst in dem Dateinen und mehr gespeichert werden können",
+    "noAccount": "Kein Premiumize Konto? Hier klicken",
+    "cancelButton": "Abbrechen",
+    "invalidApiKey": "Ungültiger API Schlüssel"
+  }
+}
