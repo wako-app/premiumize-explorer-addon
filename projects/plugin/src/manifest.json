@@ -6,10 +6,12 @@
   "description": "Browse and play videos stored on your Premiumize account",
   "author": "wako",
   "actions": ["file-explorer"],
-  "entryPointV2": "/plugin.js",
+  "entryPointV3": "/plugin.js",
+  "entryPointV2": "https://raw.githubusercontent.com/wako-app/premiumize-explorer-addon/wako5/dist/plugin.js",
   "languages": {
     "en": "/i18n/en.json",
-    "fr": "/i18n/fr.json"
+    "fr": "/i18n/fr.json",
+    "de": "/i18n/de.json"
   },
   "changeLogs": {
     "1.0.4": "Fixed media not showing",

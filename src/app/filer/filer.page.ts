@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { PluginLoaderService } from '../services/plugin-loader.service';
+
 import { ExplorerFolderItem, ExplorerItem, WakoFileActionService } from '@wako-app/mobile-sdk';
+import { PluginLoaderService } from '../services/plugin-loader.service';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'filer.page.html',
-  styleUrls: ['filer.page.scss']
+  styleUrls: ['filer.page.scss'],
 })
 export class FilerPage implements OnInit {
   private rootExplorerFolderItems: ExplorerFolderItem[] = [];

@@ -12,17 +12,17 @@ export class PremiumizeApiService extends WakoBaseHttpService {
     this.apikey = apikey;
   }
 
-  static getApiBaseUrl() {
+  static override getApiBaseUrl() {
     return 'https://www.premiumize.me/api';
   }
 
-  static getHeaders() {
+  static override getHeaders() {
     return {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded',
     };
   }
 
-  static get<T>(url: string, params?: any, cacheTime?: string | number): Observable<T> {
+  static override get<T>(url: string, params?: any, cacheTime?: string | number): Observable<T> {
     if (!params) {
       params = {};
     }
@@ -33,7 +33,7 @@ export class PremiumizeApiService extends WakoBaseHttpService {
     return super.get<T>(url, params, cacheTime, 50000);
   }
 
-  static post<T>(url: string, body: Object, cacheTime?: string) {
+  static override post<T>(url: string, body: Object, cacheTime?: string) {
     if (!url.match('apikey')) {
       url += '?apikey=' + this.apikey;
     }
@@ -43,7 +43,7 @@ export class PremiumizeApiService extends WakoBaseHttpService {
         method: 'POST',
         url: this.getApiBaseUrl() + url,
         body: body,
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       },
       cacheTime
     );
