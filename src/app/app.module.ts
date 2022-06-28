@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicStorageModule } from '@ionic/storage-angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { WakoProviders } from '@wako-app/mobile-sdk';
 import { PluginModule } from '../../projects/plugin/src/plugin/plugin.module';
@@ -21,6 +22,7 @@ import { PluginLoaderService } from './services/plugin-loader.service';
     }),
     AppRoutingModule,
     TranslateModule.forRoot(),
+    IonicStorageModule.forRoot({}),
     PluginModule,
   ],
   providers: [

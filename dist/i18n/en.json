@@ -1,0 +1,11 @@
+{
+  "test": "TOTTO",
+  "settings": {
+    "logout": "Logout",
+    "login": "Login",
+    "explain": "Premiumize.me is a could service where you can store your files and more",
+    "noAccount": "No Premiumize account? Click here",
+    "cancelButton": "Cancel",
+    "invalidApiKey": "Invalid API Key"
+  }
+}

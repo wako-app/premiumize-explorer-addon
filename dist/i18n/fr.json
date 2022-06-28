@@ -1,0 +1,10 @@
+{
+  "settings": {
+    "logout": "Se déconnecter",
+    "login": "Se connecter",
+    "explain": "Premiumize.me est un service qui vous permet de stocker vos fichiers et plus",
+    "noAccount": "Pas de compte Premiumize ? Cliquez ici",
+    "cancelButton": "Annuler",
+    "invalidApiKey": "La clé API n'est pas valide"
+  }
+}
