@@ -1,6 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-import { TranslateService } from '@ngx-translate/core';
+import { AlertController, IonicModule } from '@ionic/angular';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { BrowserService, WakoToastService } from '@wako-app/mobile-sdk';
 import { Settings, SettingsService } from '../services/settings.service';
 import { PremiumizeAccountInfoForm } from '../services/premiumize/forms/account/premiumize-account-info.form';
@@ -9,7 +9,7 @@ import { PremiumizeAccountInfoForm } from '../services/premiumize/forms/account/
     selector: 'wk-settings',
     templateUrl: './settings.component.html',
     styleUrls: ['./settings.component.scss'],
-    standalone: false
+    imports: [IonicModule, TranslateModule]
 })
 export class SettingsComponent implements OnInit {
   settings: Settings = null;

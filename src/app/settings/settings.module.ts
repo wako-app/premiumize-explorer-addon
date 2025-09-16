@@ -7,18 +7,18 @@ import { SettingsPage } from './settings.page';
 import { AddonSettingsComponent } from './addon-settings/addon-settings.component';
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: SettingsPage
-      },
-      { path: 'addon-settings', component: AddonSettingsComponent }
-    ])
-  ],
-  declarations: [SettingsPage, AddonSettingsComponent]
+    imports: [
+        IonicModule,
+        CommonModule,
+        FormsModule,
+        RouterModule.forChild([
+            {
+                path: '',
+                component: SettingsPage
+            },
+            { path: 'addon-settings', component: AddonSettingsComponent }
+        ]),
+        SettingsPage, AddonSettingsComponent
+    ]
 })
 export class SettingsPageModule {}

@@ -2,12 +2,45 @@ import { Component, OnInit } from '@angular/core';
 
 import { ExplorerFolderItem, ExplorerItem, WakoFileActionService } from '@wako-app/mobile-sdk';
 import { PluginLoaderService } from '../services/plugin-loader.service';
+import {
+  IonButton,
+  IonItemSliding,
+  IonSpinner,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonTitle,
+  IonToolbar,
+  IonItemOption,
+  IonItemOptions,
+} from '@ionic/angular/standalone';
 
 @Component({
-    selector: 'app-tab1',
-    templateUrl: 'filer.page.html',
-    styleUrls: ['filer.page.scss'],
-    standalone: false
+  selector: 'app-tab1',
+  templateUrl: 'filer.page.html',
+  styleUrls: ['filer.page.scss'],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonList,
+    IonItem,
+    IonLabel,
+    IonButtons,
+    IonIcon,
+    IonSpinner,
+    IonListHeader,
+    IonButton,
+    IonItemOption,
+    IonItemOptions,
+    IonItemSliding,
+  ],
 })
 export class FilerPage implements OnInit {
   private rootExplorerFolderItems: ExplorerFolderItem[] = [];
@@ -15,9 +48,13 @@ export class FilerPage implements OnInit {
   currentExplorerFolderItem: ExplorerFolderItem = null;
   isLoading = false;
 
-  constructor(private pluginLoader: PluginLoaderService, private fileActionService: WakoFileActionService) {}
+  constructor(
+    private pluginLoader: PluginLoaderService,
+    private fileActionService: WakoFileActionService,
+  ) {}
 
   ngOnInit() {
+    console.log('FilerPage ngOnInit');
     this.goToRoot();
   }
 

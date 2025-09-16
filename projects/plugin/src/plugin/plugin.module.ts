@@ -15,9 +15,8 @@ import { SettingsComponent } from './settings/settings.component';
 const components = [SettingsComponent, SettingsModalComponent];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule.forRoot(), TranslateModule.forRoot()],
-  declarations: [...components],
-  providers: [PluginService, ...WakoProviders, SettingsService, ExplorerService], // Add your services here. Do not use provideIn: 'root' in your services
+    imports: [CommonModule, FormsModule, IonicModule.forRoot(), TranslateModule.forRoot(), ...components],
+    providers: [PluginService, ...WakoProviders, SettingsService, ExplorerService], // Add your services here. Do not use provideIn: 'root' in your services
 })
 export class PluginModule extends PluginBaseModule {
   static override pluginService = PluginService;

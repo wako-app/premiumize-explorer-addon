@@ -12,35 +12,35 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../filer/filer.module').then((m) => m.FilterPageModule)
-          }
-        ]
+            loadChildren: () => import('../filer/filer.module').then((m) => m.FilterPageModule),
+          },
+        ],
       },
       {
         path: 'settings',
         children: [
           {
             path: '',
-            loadChildren: () => import('../settings/settings.module').then((m) => m.SettingsPageModule)
-          }
-        ]
+            loadChildren: () => import('../settings/settings.module').then((m) => m.SettingsPageModule),
+          },
+        ],
       },
       {
         path: '',
         redirectTo: '/tabs/filer',
-        pathMatch: 'full'
-      }
-    ]
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '',
     redirectTo: '/tabs/filer',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class TabsPageRoutingModule {}
