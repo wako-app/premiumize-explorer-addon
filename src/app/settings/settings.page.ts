@@ -4,9 +4,10 @@ import { PluginLoaderService } from '../services/plugin-loader.service';
 import { AddonSettingsComponent } from './addon-settings/addon-settings.component';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'settings.page.html',
-  styleUrls: ['settings.page.scss'],
+    selector: 'app-tab2',
+    templateUrl: 'settings.page.html',
+    styleUrls: ['settings.page.scss'],
+    standalone: false
 })
 export class SettingsPage implements OnInit {
   @ViewChild('settingsRef', { read: ViewContainerRef, static: true })

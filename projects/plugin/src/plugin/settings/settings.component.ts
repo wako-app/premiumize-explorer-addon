@@ -6,9 +6,10 @@ import { Settings, SettingsService } from '../services/settings.service';
 import { PremiumizeAccountInfoForm } from '../services/premiumize/forms/account/premiumize-account-info.form';
 
 @Component({
-  selector: 'wk-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+    selector: 'wk-settings',
+    templateUrl: './settings.component.html',
+    styleUrls: ['./settings.component.scss'],
+    standalone: false
 })
 export class SettingsComponent implements OnInit {
   settings: Settings = null;

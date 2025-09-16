@@ -4,9 +4,10 @@ import { ExplorerFolderItem, ExplorerItem, WakoFileActionService } from '@wako-a
 import { PluginLoaderService } from '../services/plugin-loader.service';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'filer.page.html',
-  styleUrls: ['filer.page.scss'],
+    selector: 'app-tab1',
+    templateUrl: 'filer.page.html',
+    styleUrls: ['filer.page.scss'],
+    standalone: false
 })
 export class FilerPage implements OnInit {
   private rootExplorerFolderItems: ExplorerFolderItem[] = [];

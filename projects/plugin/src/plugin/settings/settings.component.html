@@ -3,7 +3,9 @@
     <ion-label>
       <img src="https://www.premiumize.me/icon.svg" class="pm-icon" alt="" />
       Premiumize.me
-      <ion-spinner *ngIf="isLoading"></ion-spinner>
+      @if (isLoading) {
+        <ion-spinner></ion-spinner>
+      }
     </ion-label>
   </ion-list-header>
 
@@ -13,18 +15,20 @@
     </ion-label>
   </ion-item>
 
-  <ng-container *ngIf="isAuth">
-    <ion-item *ngIf="isAuth" button (click)="logout()">
-      <ion-label color="danger">{{ 'settings.logout' | translate }}</ion-label>
-    </ion-item>
-  </ng-container>
+  @if (isAuth) {
+    @if (isAuth) {
+      <ion-item button (click)="logout()">
+        <ion-label color="danger">{{ 'settings.logout' | translate }}</ion-label>
+      </ion-item>
+    }
+  }
 
-  <ng-container *ngIf="!isAuth">
+  @if (!isAuth) {
     <ion-item button (click)="login()">
       <ion-label>{{ 'settings.login' | translate }}</ion-label>
     </ion-item>
     <ion-item button (click)="openPremiumize()">
       <ion-label>{{ 'settings.noAccount' | translate }}</ion-label>
     </ion-item>
-  </ng-container>
+  }
 </ion-list>
